@@ -51,3 +51,7 @@ dependencies {
     testCompile "org.junit.jupiter:junit-jupiter-engine:${junit_jupiter_version}"
     testCompile "org.junit.jupiter:junit-jupiter-params:${junit_jupiter_version}"
 }
+
+test {
+    useJUnitPlatform()
+}
