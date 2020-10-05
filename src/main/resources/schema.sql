@@ -1,0 +1,9 @@
+drop table IF EXISTS APPLIANCES;
+
+create TABLE APPLIANCES (
+  id INT AUTO_INCREMENT  PRIMARY KEY,
+  appliance_id VARCHAR(50) NOT NULL,
+  appliance_type VARCHAR(50) NOT NULL
+);
+
+

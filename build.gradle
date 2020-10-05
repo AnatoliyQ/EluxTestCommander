@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${spring_boot_version}"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+group 'com.elux'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    annotationProcessor "org.projectlombok:lombok:${lombok_version}"
+    compileOnly "org.projectlombok:lombok:${lombok_version}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombok_version}"
+    testCompileOnly "org.projectlombok:lombok:${lombok_version}"
+
+    testCompile("org.springframework.boot:spring-boot-starter-test") {
+        exclude module: 'junit'
+    }
+
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${spring_boot_version}"
+    runtimeOnly('com.h2database:h2')
+
+
+    compile "net.logstash.logback:logstash-logback-encoder:4.11"
+    compile("io.sentry:sentry-logback:1.7.30")
+
+    compile 'io.swagger:swagger-annotations:1.5.21'
+    compile("io.springfox:springfox-swagger2:${springfox_swagger_version}") {
+        exclude module: 'mapstruct'
+    }
+    compile "io.springfox:springfox-swagger-ui:${springfox_swagger_version}"
+    compile "io.springfox:springfox-bean-validators:${springfox_swagger_version}"
+
+    testCompile "org.junit.jupiter:junit-jupiter-api:${junit_jupiter_version}"
+    testCompile "org.junit.jupiter:junit-jupiter-engine:${junit_jupiter_version}"
+    testCompile "org.junit.jupiter:junit-jupiter-params:${junit_jupiter_version}"
+}

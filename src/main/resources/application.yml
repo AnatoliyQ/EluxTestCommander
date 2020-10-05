@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: appliance-control
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+      path: /h2
+  datasource:
+    url: jdbc:h2:mem:mydb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: false
+
+
+#Port settings
+server:
+  port: 9090
+
+
+#Misc
+swagger:
+  base-path: /
+
+#Logging properties
+logging:
+  level:
+    org.springframework.web: INFO
+    org.hibernate.type: trace
